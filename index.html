@@ -3,17 +3,19 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Daftar rekening resmi pembayaran Indah Jaya (Toko Bangunan) — BCA & BRI, dengan tombol salin nomor untuk menghindari salah transfer.">
 <title>Daftar Rekening — Indah Jaya</title>
 <script src="lucide.min.js"></script>
 <link rel="stylesheet" href="tailwind.css">
 <style>
   @keyframes check-pop { 0% { transform: scale(.6); opacity: 0; } 60% { transform: scale(1.15); } 100% { transform: scale(1); opacity: 1; } }
   .copied { animation: check-pop .18s ease-out; }
+  @media (prefers-reduced-motion: reduce) { .copied { animation: none; } .transition { transition: none; } }
 </style>
 </head>
 <body class="min-h-screen bg-slate-100 flex items-center justify-center p-4 sm:p-8 font-sans text-slate-900 antialiased">
 
-  <div class="w-full max-w-xl bg-white rounded-2xl shadow-xl shadow-slate-300/50 p-6 sm:p-10">
+  <div class="w-full max-w-xl bg-white rounded-2xl shadow-lg shadow-slate-300/50 p-6 sm:p-10">
 
     <header class="text-center">
       <img src="indah-jaya-crop.png" alt="Indah Jaya" class="h-20 mx-auto">
@@ -21,10 +23,53 @@
       <p class="mt-1 text-sm text-slate-500">Indah Jaya &mdash; Informasi Pembayaran</p>
     </header>
 
-    <div class="my-6 h-0.5 rounded bg-gradient-to-r from-slate-400 via-slate-800 to-slate-400"></div>
+    <div class="my-6 h-0.5 rounded bg-gradient-to-r from-slate-400 via-slate-800 to-slate-400" aria-hidden="true"></div>
 
-    <!-- Kartu rekening (isi oleh JS) -->
-    <div id="accounts" class="space-y-3.5"></div>
+    <!-- Kartu rekening: ditulis statis di HTML agar tetap ada tanpa JS & terbaca mesin pencari -->
+    <div class="space-y-3.5">
+
+      <div class="flex items-center gap-3 rounded-xl border border-slate-200 p-4">
+        <img src="bca-blue.svg" alt="" class="w-12 sm:w-20 shrink-0">
+        <div class="min-w-0 flex-1">
+          <div class="text-[10px] uppercase tracking-[.2em] text-slate-500">Bank Central Asia</div>
+          <div class="font-mono font-bold text-sm sm:text-lg tracking-wider break-all">3710100666</div>
+          <div class="text-sm"><span class="text-slate-500 text-xs">a.n. </span><span class="text-sm sm:text-lg font-bold text-slate-900">Lie Farihian</span></div>
+        </div>
+        <button type="button" class="copy-btn shrink-0 inline-flex items-center gap-1.5 rounded-lg border border-slate-300 bg-slate-50 px-3 py-2.5 text-xs font-semibold hover:bg-slate-100 active:scale-95 transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-800" data-copy="3710100666" data-bank="BCA">
+          <i data-lucide="copy" aria-hidden="true" class="w-3.5 h-3.5"></i> Salin
+        </button>
+      </div>
+
+      <div class="flex items-center gap-3 rounded-xl border border-slate-200 p-4">
+        <img src="bri.svg" alt="" class="w-12 sm:w-20 shrink-0">
+        <div class="min-w-0 flex-1">
+          <div class="text-[10px] uppercase tracking-[.2em] text-slate-500">Bank Rakyat Indonesia</div>
+          <div class="font-mono font-bold text-sm sm:text-lg tracking-wider break-all">020701011140500</div>
+          <div class="text-sm"><span class="text-slate-500 text-xs">a.n. </span><span class="text-sm sm:text-lg font-bold text-slate-900">Lie Farihian</span></div>
+        </div>
+        <button type="button" class="copy-btn shrink-0 inline-flex items-center gap-1.5 rounded-lg border border-slate-300 bg-slate-50 px-3 py-2.5 text-xs font-semibold hover:bg-slate-100 active:scale-95 transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-800" data-copy="020701011140500" data-bank="BRI">
+          <i data-lucide="copy" aria-hidden="true" class="w-3.5 h-3.5"></i> Salin
+        </button>
+      </div>
+
+      <div class="flex items-center gap-3 rounded-xl border border-slate-200 p-4">
+        <img src="bca-blue.svg" alt="" class="w-12 sm:w-20 shrink-0">
+        <div class="min-w-0 flex-1">
+          <div class="text-[10px] uppercase tracking-[.2em] text-slate-500">Bank Central Asia</div>
+          <div class="font-mono font-bold text-sm sm:text-lg tracking-wider break-all">3710528445</div>
+          <div class="text-sm"><span class="text-slate-500 text-xs">a.n. </span><span class="text-sm sm:text-lg font-bold text-slate-900">Shervia Devi Winoto</span></div>
+        </div>
+        <button type="button" class="copy-btn shrink-0 inline-flex items-center gap-1.5 rounded-lg border border-slate-300 bg-slate-50 px-3 py-2.5 text-xs font-semibold hover:bg-slate-100 active:scale-95 transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-800" data-copy="3710528445" data-bank="BCA">
+          <i data-lucide="copy" aria-hidden="true" class="w-3.5 h-3.5"></i> Salin
+        </button>
+      </div>
+
+    </div>
+
+    <p class="mt-5 text-center text-sm">
+      <i data-lucide="clipboard-check" aria-hidden="true" class="w-4 h-4 inline-block align-text-bottom"></i>
+      Tap <b>Salin</b> untuk menyalin nomor tanpa salah ketik.
+    </p>
 
     <footer class="mt-5 text-center text-xs text-slate-500 leading-relaxed">
       Mohon cek kembali nomor rekening sebelum melakukan transfer.<br>
@@ -32,33 +77,9 @@
     </footer>
   </div>
 
+  <span id="copy-status" role="status" aria-live="polite" class="sr-only"></span>
+
 <script>
-  const accounts = [
-    { bank: "Bank Central Asia", logo: "bca-blue.svg", number: "3710100666", name: "Lie Farihian" },
-    { bank: "Bank Rakyat Indonesia", logo: "bri.svg", number: "020701011140500", name: "Lie Farihian" },
-    { bank: "Bank Central Asia", logo: "bca-blue.svg", number: "3710528445", name: "Shervia Devi Winoto" },
-  ];
-
-  document.getElementById("accounts").innerHTML = accounts.map(a => `
-    <div class="flex items-center gap-3 rounded-xl border border-slate-200 p-4">
-      <img src="${a.logo}" alt="${a.bank}" class="w-12 sm:w-20 shrink-0">
-      <div class="min-w-0 flex-1">
-        <div class="text-[10px] uppercase tracking-[.2em] text-slate-400">${a.bank}</div>
-        <div class="font-mono font-bold text-sm sm:text-lg tracking-wider break-all">${a.number}</div>
-        <div class="text-sm"><span class="text-slate-400 text-xs">a.n. </span><span class="text-sm sm:text-lg font-bold text-slate-900">${a.name}</span></div>
-      </div>
-      <button type="button" data-copy="${a.number}"
-        class="copy-btn shrink-0 inline-flex items-center gap-1.5 rounded-lg border border-slate-300 bg-slate-50 px-3 py-2 text-xs font-semibold hover:bg-slate-100 active:scale-95 transition">
-        <i data-lucide="copy" class="w-3.5 h-3.5"></i> Salin
-      </button>
-    </div>
-  `).join("") + `
-    <p class="mt-5 text-center text-sm">
-      <i data-lucide="clipboard-check" class="w-4 h-4 inline-block align-text-bottom"></i>
-      Tap <b>Salin</b> untuk menyalin nomor tanpa salah ketik.
-    </p>
-  `;
-
   lucide.createIcons();
 
   function copyText(text) {
@@ -73,14 +94,25 @@
     return Promise.resolve();
   }
 
+  const status = document.getElementById("copy-status");
+
   document.querySelectorAll(".copy-btn").forEach(btn => {
-    const done = () => {
-      btn.classList.add("copied");
-      btn.innerHTML = '<i data-lucide="check-check" class="w-3.5 h-3.5 text-emerald-700"></i> <span class="text-emerald-700">Tersalin</span>';
-      lucide.createIcons();
-      setTimeout(() => { btn.classList.remove("copied"); btn.innerHTML = '<i data-lucide="copy" class="w-3.5 h-3.5"></i> Salin'; lucide.createIcons(); }, 1800);
-    };
-    btn.addEventListener("click", () => copyText(btn.dataset.copy).then(done));
+    btn.setAttribute("aria-label", "Salin nomor rekening " + btn.dataset.bank + " " + btn.dataset.copy);
+    const idle = btn.innerHTML;
+    btn.addEventListener("click", () => {
+      copyText(btn.dataset.copy).then(() => {
+        btn.classList.add("copied");
+        btn.innerHTML = '<i data-lucide="check-check" aria-hidden="true" class="w-3.5 h-3.5"></i> <span class="text-emerald-700">Tersalin</span>';
+        lucide.createIcons();
+        status.textContent = "Nomor " + btn.dataset.bank + " " + btn.dataset.copy + " tersalin";
+        setTimeout(() => {
+          btn.classList.remove("copied");
+          btn.innerHTML = idle;
+          status.textContent = "";
+          lucide.createIcons();
+        }, 1800);
+      });
+    });
   });
 </script>
 </body>

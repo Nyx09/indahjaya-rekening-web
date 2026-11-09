@@ -6,7 +6,6 @@
 <meta name="format-detection" content="telephone=no">
 <meta name="description" content="Daftar rekening resmi pembayaran Indah Jaya (Toko Bangunan) — BCA & BRI, dengan tombol salin nomor untuk menghindari salah transfer.">
 <title>Daftar Rekening — Indah Jaya</title>
-<script src="lucide.min.js"></script>
 <link rel="stylesheet" href="tailwind.css">
 <style>
   @keyframes check-pop { 0% { transform: scale(.6); opacity: 0; } 60% { transform: scale(1.15); } 100% { transform: scale(1); opacity: 1; } }
@@ -37,7 +36,7 @@
           <div class="text-sm"><span class="text-slate-500 text-xs">a.n. </span><span class="text-sm sm:text-lg font-bold text-slate-900">Lie Farihian</span></div>
         </div>
         <button type="button" class="copy-btn shrink-0 inline-flex items-center gap-1.5 rounded-lg border border-slate-300 bg-slate-50 px-3 py-2.5 text-xs font-semibold hover:bg-slate-100 active:scale-95 transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-800" data-copy="3710100666" data-bank="BCA">
-          <i data-lucide="copy" aria-hidden="true" class="w-3.5 h-3.5"></i> Salin
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5" aria-hidden="true"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg> Salin
         </button>
       </div>
 
@@ -49,7 +48,7 @@
           <div class="text-sm"><span class="text-slate-500 text-xs">a.n. </span><span class="text-sm sm:text-lg font-bold text-slate-900">Lie Farihian</span></div>
         </div>
         <button type="button" class="copy-btn shrink-0 inline-flex items-center gap-1.5 rounded-lg border border-slate-300 bg-slate-50 px-3 py-2.5 text-xs font-semibold hover:bg-slate-100 active:scale-95 transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-800" data-copy="020701011140500" data-bank="BRI">
-          <i data-lucide="copy" aria-hidden="true" class="w-3.5 h-3.5"></i> Salin
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5" aria-hidden="true"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg> Salin
         </button>
       </div>
 
@@ -61,14 +60,14 @@
           <div class="text-sm"><span class="text-slate-500 text-xs">a.n. </span><span class="text-sm sm:text-lg font-bold text-slate-900">Shervia Devi Winoto</span></div>
         </div>
         <button type="button" class="copy-btn shrink-0 inline-flex items-center gap-1.5 rounded-lg border border-slate-300 bg-slate-50 px-3 py-2.5 text-xs font-semibold hover:bg-slate-100 active:scale-95 transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-800" data-copy="3710528445" data-bank="BCA">
-          <i data-lucide="copy" aria-hidden="true" class="w-3.5 h-3.5"></i> Salin
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5" aria-hidden="true"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg> Salin
         </button>
       </div>
 
     </div>
 
     <p class="mt-5 text-center text-sm">
-      <i data-lucide="clipboard-check" aria-hidden="true" class="w-4 h-4 inline-block align-text-bottom"></i>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 inline-block align-text-bottom" aria-hidden="true"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="m9 14 2 2 4-4"/></svg>
       Tap <b>Salin</b> untuk menyalin nomor tanpa salah ketik.
     </p>
 
@@ -81,37 +80,27 @@
   <span id="copy-status" role="status" aria-live="polite" class="sr-only"></span>
 
 <script>
-  lucide.createIcons();
-
-  function copyText(text) {
-    if (navigator.clipboard && window.isSecureContext) return navigator.clipboard.writeText(text);
-    const ta = document.createElement("textarea"); // fallback WebView lama / HTTP
-    ta.value = text;
-    ta.style.cssText = "position:fixed;opacity:0";
-    document.body.appendChild(ta);
-    ta.select();
-    try { document.execCommand("copy"); } catch (e) {}
-    ta.remove();
-    return Promise.resolve();
-  }
+  const CHECK = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5" aria-hidden="true"><path d="M18 6 7 17l-5-5"/><path d="m22 10-7.5 7.5L13 16"/></svg>';
 
   const status = document.getElementById("copy-status");
 
   document.querySelectorAll(".copy-btn").forEach(btn => {
     btn.setAttribute("aria-label", "Salin nomor rekening " + btn.dataset.bank + " " + btn.dataset.copy);
     const idle = btn.innerHTML;
+    let timer;
     btn.addEventListener("click", () => {
-      copyText(btn.dataset.copy).then(() => {
+      clearTimeout(timer); // reset pending timer dari klik sebelumnya
+      navigator.clipboard.writeText(btn.dataset.copy).then(() => {
         btn.classList.add("copied");
-        btn.innerHTML = '<i data-lucide="check-check" aria-hidden="true" class="w-3.5 h-3.5"></i> <span class="text-emerald-700">Tersalin</span>';
-        lucide.createIcons();
+        btn.innerHTML = CHECK + ' <span class="text-emerald-700">Tersalin</span>';
         status.textContent = "Nomor " + btn.dataset.bank + " " + btn.dataset.copy + " tersalin";
-        setTimeout(() => {
+        timer = setTimeout(() => {
           btn.classList.remove("copied");
           btn.innerHTML = idle;
           status.textContent = "";
-          lucide.createIcons();
         }, 1800);
+      }).catch(() => {
+        status.textContent = "Gagal menyalin — salin manual: " + btn.dataset.bank + " " + btn.dataset.copy;
       });
     });
   });

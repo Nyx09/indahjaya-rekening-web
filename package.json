@@ -1,0 +1,11 @@
+{
+  "name": "indahjaya-rekening-web",
+  "private": true,
+  "scripts": {
+    "build:css": "tailwindcss -i input.css -o tailwind.css --minify"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.1.0",
+    "tailwindcss": "^4.1.0"
+  }
+}

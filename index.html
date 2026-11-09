@@ -41,11 +41,11 @@
 
   document.getElementById("accounts").innerHTML = accounts.map(a => `
     <div class="flex items-center gap-3 rounded-xl border border-slate-200 p-4">
-      <img src="${a.logo}" alt="${a.bank}" class="w-16 sm:w-20 shrink-0">
+      <img src="${a.logo}" alt="${a.bank}" class="w-12 sm:w-20 shrink-0">
       <div class="min-w-0 flex-1">
         <div class="text-[10px] uppercase tracking-[.2em] text-slate-400">${a.bank}</div>
-        <div class="font-mono font-bold text-base sm:text-lg tracking-wider break-all">${a.number}</div>
-        <div class="text-sm font-semibold">a.n. <span class="text-slate-400 font-normal">${a.name}</span></div>
+        <div class="font-mono font-bold text-sm sm:text-lg tracking-wider break-all">${a.number}</div>
+        <div class="text-sm"><span class="text-slate-400 text-xs">a.n. </span><span class="text-sm sm:text-lg font-bold text-slate-900">${a.name}</span></div>
       </div>
       <button type="button" data-copy="${a.number}"
         class="copy-btn shrink-0 inline-flex items-center gap-1.5 rounded-lg border border-slate-300 bg-slate-50 px-3 py-2 text-xs font-semibold hover:bg-slate-100 active:scale-95 transition">

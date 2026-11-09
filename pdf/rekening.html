@@ -39,23 +39,25 @@
   .acc .number { font-family: Consolas, "Courier New", monospace; font-size: 19pt; font-weight: 700; margin: 1.5mm 0; letter-spacing: 1px; }
   .acc .name { font-size: 12.5pt; font-weight: 700; color: #1f2430; }
   .acc .name::before { content: "a.n. "; color: #8a8f99; font-size: 10pt; font-weight: 400; }
-  .qr-row { text-align: center; margin: 0 0 8mm; }
-  .qr-row b { font-size: 12pt; }
-  .qr-row p { color: #8a8f99; font-size: 9.5pt; margin-top: 1.5mm; line-height: 1.5; }
+  .qr-row { display: flex; align-items: center; justify-content: center; gap: 7mm; margin: 0 0 7mm; }
+  .qr-row img { width: 32mm; height: 32mm; }
+  .qr-row .txt { max-width: 80mm; }
+  .qr-row .txt b { font-size: 11.5pt; }
+  .qr-row .txt p { color: #8a8f99; font-size: 9.5pt; margin-top: 1.5mm; line-height: 1.5; }
   .footer { margin-top: 0; text-align: center; color: #8a8f99; font-size: 9.5pt; line-height: 1.6; }
 </style>
 </head>
 <body>
   <div class="sheet">
   <div class="header">
-    <img class="logo" src="indah-jaya-crop.png" alt="Indah Jaya">
+    <img class="logo" src="assets/indah-jaya-crop.png" alt="Indah Jaya">
     <h1>Daftar Rekening</h1>
     <p>Indah Jaya &mdash; Informasi Pembayaran</p>
   </div>
   <div class="divider"></div>
 
   <div class="card">
-    <div class="bank-logo"><img src="bca-blue.svg" alt="BCA"></div>
+    <div class="bank-logo"><img src="assets/bca-blue.svg" alt="BCA"></div>
     <div class="acc">
       <div class="bank-name">Bank Central Asia</div>
       <div class="number">3710100666</div>
@@ -64,7 +66,7 @@
   </div>
 
   <div class="card">
-    <div class="bank-logo"><img src="bri.svg" alt="BRI"></div>
+    <div class="bank-logo"><img src="assets/bri.svg" alt="BRI"></div>
     <div class="acc">
       <div class="bank-name">Bank Rakyat Indonesia</div>
       <div class="number">020701011140500</div>
@@ -73,7 +75,7 @@
   </div>
 
   <div class="card">
-    <div class="bank-logo"><img src="bca-blue.svg" alt="BCA"></div>
+    <div class="bank-logo"><img src="assets/bca-blue.svg" alt="BCA"></div>
     <div class="acc">
       <div class="bank-name">Bank Central Asia</div>
       <div class="number">3710528445</div>
@@ -82,8 +84,11 @@
   </div>
 
   <div class="qr-row">
-    <b>Salin nomor rekening sesuai bank tujuan Anda</b>
-    <p>Gunakan nomor yang tertera di atas — pastikan bank dan nama penerima sesuai sebelum transfer.</p>
+    <img src="assets/qr-website.png" alt="QR website Indah Jaya">
+    <div class="txt">
+      <b>Scan untuk salin nomor rekening online</b>
+      <p>Selain salin manual dari daftar di atas — scan QR ini untuk membuka halaman rekening online: <span style="font-size:8.5pt;color:#8a8f99">indahjaya-rekening.netlify.app</span></p>
+    </div>
   </div>
 
   <div class="footer">

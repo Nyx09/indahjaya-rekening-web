@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Daftar Rekening — Indah Jaya</title>
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+<style>
+  @keyframes check-pop { 0% { transform: scale(.6); opacity: 0; } 60% { transform: scale(1.15); } 100% { transform: scale(1); opacity: 1; } }
+  .copied { animation: check-pop .18s ease-out; }
+</style>
+</head>
+<body class="min-h-screen bg-slate-100 flex items-center justify-center p-4 sm:p-8 font-sans text-slate-900 antialiased">
+
+  <div class="w-full max-w-xl bg-white rounded-2xl shadow-xl shadow-slate-300/50 p-6 sm:p-10">
+
+    <header class="text-center">
+      <img src="indah-jaya-crop.png" alt="Indah Jaya" class="h-20 mx-auto">
+      <h1 class="mt-4 text-2xl sm:text-3xl font-bold tracking-tight">Daftar Rekening</h1>
+      <p class="mt-1 text-sm text-slate-500">Indah Jaya &mdash; Informasi Pembayaran</p>
+    </header>
+
+    <div class="my-6 h-0.5 rounded bg-gradient-to-r from-slate-400 via-slate-800 to-slate-400"></div>
+
+    <!-- Kartu rekening (isi oleh JS) -->
+    <div id="accounts" class="space-y-3.5"></div>
+
+    <!-- Security note -->
+    <div class="mt-6 flex items-start gap-3 rounded-lg border border-amber-200 bg-amber-50 p-3.5">
+      <i data-lucide="shield-alert" class="w-5 h-5 shrink-0 text-amber-600 mt-0.5"></i>
+      <div class="text-sm">
+        <b class="block text-amber-900">Waspada modus transfer</b>
+        <span class="text-amber-800 leading-snug">Pastikan <b>bank</b> dan <b>nama penerima</b> sesuai daftar di atas sebelum transfer. Rekening resmi Indah Jaya hanya yang tercantum di halaman ini.</span>
+      </div>
+    </div>
+
+    <footer class="mt-5 text-center text-xs text-slate-500 leading-relaxed">
+      Mohon cek kembali nomor rekening sebelum melakukan transfer.<br>
+      Simpan bukti transfer sebagai konfirmasi pembayaran.
+    </footer>
+  </div>
+
+<script>
+  const accounts = [
+    { bank: "Bank Central Asia", logo: "bca-blue.svg", number: "3710100666", name: "Lie Farihian" },
+    { bank: "Bank Rakyat Indonesia", logo: "bri.svg", number: "020701011140500", name: "Lie Farihian" },
+    { bank: "Bank Central Asia", logo: "bca-blue.svg", number: "3710528445", name: "Shervia Devi Winoto" },
+  ];
+
+  document.getElementById("accounts").innerHTML = accounts.map(a => `
+    <div class="flex items-center gap-3 rounded-xl border border-slate-200 p-4">
+      <img src="${a.logo}" alt="${a.bank}" class="w-16 sm:w-20 shrink-0">
+      <div class="min-w-0 flex-1">
+        <div class="text-[10px] uppercase tracking-[.2em] text-slate-400">${a.bank}</div>
+        <div class="font-mono font-bold text-base sm:text-lg tracking-wider break-all">${a.number}</div>
+        <div class="text-sm font-semibold">a.n. <span class="text-slate-400 font-normal">${a.name}</span></div>
+      </div>
+      <button type="button" data-copy="${a.number}"
+        class="copy-btn shrink-0 inline-flex items-center gap-1.5 rounded-lg border border-slate-300 bg-slate-50 px-3 py-2 text-xs font-semibold hover:bg-slate-100 active:scale-95 transition">
+        <i data-lucide="copy" class="w-3.5 h-3.5"></i> Salin
+      </button>
+    </div>
+  `).join("") + `
+    <p class="mt-5 text-center text-sm">
+      <i data-lucide="clipboard-check" class="w-4 h-4 inline-block align-text-bottom"></i>
+      Tap <b>Salin</b> untuk menyalin nomor tanpa salah ketik.
+    </p>
+  `;
+
+  lucide.createIcons();
+
+  function copyText(text) {
+    if (navigator.clipboard && window.isSecureContext) return navigator.clipboard.writeText(text);
+    const ta = document.createElement("textarea"); // fallback WebView lama / HTTP
+    ta.value = text;
+    ta.style.cssText = "position:fixed;opacity:0";
+    document.body.appendChild(ta);
+    ta.select();
+    try { document.execCommand("copy"); } catch (e) {}
+    ta.remove();
+    return Promise.resolve();
+  }
+
+  document.querySelectorAll(".copy-btn").forEach(btn => {
+    const done = () => {
+      btn.classList.add("copied");
+      btn.innerHTML = '<i data-lucide="check-check" class="w-3.5 h-3.5 text-emerald-700"></i> <span class="text-emerald-700">Tersalin</span>';
+      lucide.createIcons();
+      setTimeout(() => { btn.classList.remove("copied"); btn.innerHTML = '<i data-lucide="copy" class="w-3.5 h-3.5"></i> Salin'; lucide.createIcons(); }, 1800);
+    };
+    btn.addEventListener("click", () => copyText(btn.dataset.copy).then(done));
+  });
+</script>
+</body>
+</html>
